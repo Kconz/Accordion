@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        border: none;
+        outline: none;
+      }
+      .panel {
+        background-color: aliceblue;
+        padding: 20px;
+        display: none;
+        overflow: hidden;
+      }
+      .active,
+      .accordion:hover {
+        background-color: #444;
+        color: white;
+      }
+      .accordion i {
+        float: right;
+      }
+    </style>
+
+    <button class="accordion">
+      Section-1
+      <i id="icon" class="fa-regular fa-plus"></i>
+    </button>
+    <div class="panel">
+      <p class="text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, dolore
+        deleniti perferendis facilis atque accusamus nobis corrupti sunt alias
+        quaerat.
+      </p>
+    </div>
+    <button class="accordion">
+      Section-2<i id="icon" class="fa-regular fa-plus"></i>
+    </button>
+    <div class="panel">
+      <p class="text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, dolore
+        deleniti perferendis facilis atque accusamus nobis corrupti sunt alias
+        quaerat.
+      </p>
+    </div>
+    <button class="accordion">
+      Section-3<i id="icon" class="fa-regular fa-plus"></i>
+    </button>
+    <div class="panel">
+      <p class="text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, dolore
+        deleniti perferendis facilis atque accusamus nobis corrupti sunt alias
+        quaerat.
+      </p>
+    </div>
+   
+    <script>
+      let acc = document.getElementsByClassName("accordion");
+
+      for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+
+          //Toggle with plus and minus change style solid and regular in fontawesome
+          let toggleCss = acc[i].getElementsByTagName("i");
+          if (this.classList.contains("active")) {
+            toggleCss.icon.classList.replace("fa-regular", "fa-solid");
+            toggleCss.icon.classList.replace("fa-plus", "fa-minus");
+
+          } else {
+            toggleCss.icon.classList.replace("fa-solid", "fa-regular");
+            toggleCss.icon.classList.replace("fa-minus", "fa-plus");
+          }
+
+          // check class if btn (accordion) are active and change icon from + to - :: to saw the information in accordion
+          // can use this in ternary but add another fa-regular => fa-solid 
+          // this.classList.contains("active")
+          //   ? this.lastElementChild.classList.replace("fa-plus", "fa-minus")
+          //   : this.lastElementChild.classList.replace("fa-minus", "fa-plus");
+          // if (this.classList.contains("active")) {
+          //   if (this.className === "fa-regular fa-plus") {
+          //     this.className.contains("fa-plus").toggle("fa-minus");
+          //   }
+          // }
+
+          // get panel that show information
+          let panel = this.nextElementSibling;
+          panel.style.display === "block"
+            ? (panel.style.display = "none")
+            : (panel.style.display = "block");
+        });
+      }
+    </script>
+     <script
+     src="https://kit.fontawesome.com/0ff88aaf77.js"
+     crossorigin="anonymous"
+   ></script>
+  </body>
+</html>
