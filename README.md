@@ -1,3 +1,3 @@
 # Accordion
 accordion style basic
-Use fontAwesome in plus and minus icon when active accordion
+Use fontAwesome icon plus and minus when active accordion
